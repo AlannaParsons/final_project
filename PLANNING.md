@@ -32,6 +32,9 @@ BE
     
 DB
     - PostgreSQL 9.x
+
+HOSTING
+    - Vercel
     
 
 ## Stories
@@ -60,21 +63,46 @@ Client has editable user page
     - you show up in searches due to which factors (possible)???
 
 # Data
+account is expected to be a company, a company may not have multiple therapists under their umbrella. therapists may have individual email and phone number associated than the company, if user does not input email and phone number we should auto pull company info. handled by db or backend?
 
-Client 
-    - name (first last)
-    - designation/education (?)
-    - address (split for later map usage?)
-    - email
-    - company
-    - accepting client toggle
+Account = {
+    id: string;
+    name: string;
+    email: string;
+    password: string;
+    address: string;
+    phone_number: string,
+    website: string;
+  };
+
+Therapist = {
+    id: string;
+    name: string;
+    designation: string;
+        Licensed professional counselors (LPCs)
+        Licensed mental health counselors (LMHCs)
+        Licensed marriage and family therapists (LMFTs)
+        Licensed clinical social workers (LCSWs)
+        Psychologists (PhDs or PsyDs)
+        Psychiatrists (MDs or DOs)
+    phone_number: string,
+    email: string;
+    website: string;
+    company_id: string;
+    accepting_clients: string;
+    price_min: number;
+    price_max: number;
+    therapies: string | string[];
+  };
+
+
 
 Seperate searchable data?
 connecting next and chakra
 https://chakra-ui.com/getting-started/nextjs-app-guide
 
-ooo
-- sign up
-- database
-- presentation
+# Next Steps
 
+    - reorg db, more seeding
+    - re org sign up page to accomodate account having multiple therapists
+    - make data helper? if phone number/email blank, auto fill with account info? button for auto fill? front end task?
