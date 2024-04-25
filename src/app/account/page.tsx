@@ -1,138 +1,68 @@
-// User/Therapist sign up page 
+// User Account primary page 
+// change based on user status/state???
+// logged in then go to show or sign up
 "use client"
+
 import {
+    Box,
+    Button,
+    Container,
+    Divider,
     FormControl,
     FormLabel,
-    FormErrorMessage,
-    FormHelperText,
+    Heading,
+    HStack,
     Input,
-    Button
-} from '@chakra-ui/react';
+    Link,
+    Stack,
+    Text,
+  } from '@chakra-ui/react'
+  import { PasswordField } from '../components/PasswordField'
 
-import { Card, CardHeader, Heading, HStack } from '@chakra-ui/react'
-import { FormEvent } from 'react';
-
-export default function Register() {
-    const handleSubmit = async (e: FormEvent) => {
-        e.preventDefault()
-        const formParse = new FormData(e.target as HTMLFormElement);
-        console.log('handler formdata', Object.fromEntries(formParse.entries()))
-        try {
-          const res = await fetch('/api/account',{
-            method: 'POST',
-            body: JSON.stringify(Object.fromEntries(formParse.entries())),
-            headers: {
-              'content-type': 'application/json'
-            }
-          })
-          console.log(res)
-          if(res.ok){
-            console.log("Yeai!")
-          }else{
-            console.log("Oops! Something is wrong.")
-          }
-        } catch (error) {
-            console.log(error)
-        }
-      }
-
+export default function AccountHome() {
+    // if user is logged in ??? where to redirect
 
     return (
+        // <> login or register </>
 
-    <form onSubmit={handleSubmit}>
-    {/* onSubmit={handleSubmit}> */}
-    {/* same line . drop down?*/}
-        <Card>
-            <CardHeader>
-                <Heading size='md'>User</Heading>
-            </CardHeader>
-
-            <HStack spacing='24px'>
-                <FormControl isRequired>
-                    <FormLabel>Designation</FormLabel>
-                    <Input name='des' placeholder='Des' />
+        <Container maxW="lg" py={{ base: '12', md: '24' }} px={{ base: '0', sm: '8' }}>
+        <Stack spacing="8">
+          <Stack spacing="6">
+            <Stack spacing={{ base: '2', md: '3' }} textAlign="center">
+              <Heading size={{ base: 'xs', md: 'sm' }}>Log in to your account</Heading>
+              <Text color="fg.muted">
+                Don't have an account? <Link href="#">Sign up</Link>
+              </Text>
+            </Stack>
+          </Stack>
+          <Box
+            py={{ base: '0', sm: '8' }}
+            px={{ base: '4', sm: '10' }}
+            bg={{ base: 'transparent', sm: 'bg.surface' }}
+            boxShadow={{ base: 'none', sm: 'md' }}
+            borderRadius={{ base: 'none', sm: 'xl' }}
+          >
+            <Stack spacing="6">
+              <Stack spacing="5">
+                <FormControl>
+                  <FormLabel htmlFor="email">Email</FormLabel>
+                  <Input id="email" type="email" />
                 </FormControl>
+                <PasswordField />
+              </Stack>
+              <HStack justify="space-between">
 
-                <FormControl isRequired>
-                    <FormLabel>First name</FormLabel>
-                    <Input name='fn' placeholder='First name' />
-                </FormControl>
+              </HStack>
+              <Stack spacing="6">
+                <Button>Sign in</Button>
 
-                <FormControl isRequired>
-                    <FormLabel>Last name</FormLabel>
-                    <Input name='ln' placeholder='Last name' />
-                </FormControl>
-            </HStack>
-        </Card>
+              </Stack>
+            </Stack>
+          </Box>
+        </Stack>
+      </Container>
 
-        <Card>
-            <CardHeader>
-                <Heading size='md'>Account info</Heading>
-            </CardHeader>
 
-            <FormControl isRequired>
-                <FormLabel>User Name</FormLabel>
-                <Input placeholder='emai???' />
-            </FormControl>
-
-            <FormControl mt={6}>
-                <FormLabel>Password</FormLabel>
-                <Input type="password" placeholder="*******" />
-            </FormControl>
-        </Card>
-
-        <Card>
-            <CardHeader>
-                <Heading size='md'>Company info</Heading>
-            </CardHeader>
-
-            <FormControl isRequired>
-                <FormLabel>Company Name</FormLabel>
-                <Input placeholder='Inc.' />
-            </FormControl>
-
-            <FormControl isRequired>
-                <FormLabel>Phone number</FormLabel>
-                <Input placeholder='Num' />
-            </FormControl>
-
-            <FormControl isRequired>
-                <FormLabel>Email address</FormLabel>
-                <Input type='email' />
-            </FormControl>
-
-            <FormControl isRequired>
-                <FormLabel>Website</FormLabel>
-                <Input placeholder='www.' />
-            </FormControl>
-
-            <FormControl isRequired>
-                <FormLabel>Address</FormLabel>
-                <Input placeholder='Add' />
-            </FormControl>
-        </Card>
-
-        <Card>
-            <CardHeader>
-                <Heading size='md'>Therapy info</Heading>
-            </CardHeader>
-
-            <FormControl isRequired>
-                <FormLabel>Pricing</FormLabel>
-                <Input placeholder='$' />
-            </FormControl>
-
-            <FormControl isRequired>
-                <FormLabel>Available Therapies</FormLabel>
-                <Input placeholder='therapies?' />
-            </FormControl>
-
-        </Card>
-
-        <Button width="full" mt={4} type="submit">
-            Sign In
-        </Button>
-    </form>
 
   //https://chakra-ui.com/docs/components/form-control/usage
 

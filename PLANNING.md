@@ -62,9 +62,24 @@ Client has editable user page
     - see amount of traffic???
     - you show up in searches due to which factors (possible)???
 
+Client can house multiple therapists
+    - may add delete and edit as needed
+
+Client order of operations
+    - navigate to accounts
+    - login/register
+        - login
+            - show therapists (each housing stats)
+            - edit therapists
+            - edit account
+        - register
+            - from reg -> redirect to add therapists to build out org.
+
 # Data
 account is expected to be a company, a company may not have multiple therapists under their umbrella. therapists may have individual email and phone number associated than the company, if user does not input email and phone number we should auto pull company info. handled by db or backend?
 
+
+- REVISIT - change name to email? and "email" should be client accessible email, which may differ fron sign in. confusing? 
 Account = {
     id: string;
     name: string;
@@ -103,6 +118,7 @@ https://chakra-ui.com/getting-started/nextjs-app-guide
 
 # Next Steps
 
-    - reorg db, more seeding
-    - re org sign up page to accomodate account having multiple therapists
     - make data helper? if phone number/email blank, auto fill with account info? button for auto fill? front end task?
+    - start home page which will show therapists? start of searchability
+    - make account nav, impliments login cookies
+    - handle redirect. upon successful account creation
