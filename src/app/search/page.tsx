@@ -3,6 +3,7 @@
 import { fetchTherapists, fetchSearchedTherapists } from '@/app/lib/data';
 import { SearchBar } from '../components/SearchBar'
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation'
 import {
     Box,
     SimpleGrid,
@@ -11,9 +12,8 @@ import {
 
 
 export default function Page(props) {
-    
+  const router = useRouter()
     const updateTherapists = async (formData) => {
-
         try {
           const res = await fetch('/api/search',{
             method: 'POST',
@@ -35,26 +35,13 @@ export default function Page(props) {
         }
       }
 
-    //const [therapists, setTherapists] = useState([])
    
     const [therapists, setTherapists] = useState([])
-    console.log('PAGE LOADED')
     useEffect(() => {
         updateTherapists({min_price: '0', max_price: '10000', location: '', specialties: ''})
       },[]);
-    //updateTherapists({min_price: '0', max_price: '10000', location: '', specialties: ''})
-    // const updateTherapists = async (form_data) => {
-    //     const therapistData = await fetchSearchedTherapists(form_data);
-    //     console.log('serached data', therapistData)
-    //     //update page state w search state>?
-    //     setTherapists(therapistData);
-    //{min_price: '200', max_price: '800', location: '', specialties: ''}
-    
-    
-    //   };
 
-
-    
+      
     return (
         <>
 
@@ -64,7 +51,7 @@ export default function Page(props) {
 
             {therapists.map((therapist) => (
 
-                <Box key={therapist.id} bg='tomato' height='80px'>
+                <Box key={therapist.id} bg='tomato' height='80px' onClick={() => router.push(`/search/${therapist.id}`)}>
                     
                     {therapist.name}
                     {therapist.price_max} 

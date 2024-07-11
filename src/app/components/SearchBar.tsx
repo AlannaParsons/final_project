@@ -45,7 +45,7 @@ import {
     return (
       <Drawer
       //isOpen={isOpen}
-      isOpen={true}
+      isOpen={false}
       placement='right'
       onClose={onClose}
       //finalFocusRef={btnRef}
@@ -55,53 +55,37 @@ import {
         <DrawerCloseButton />
         <DrawerHeader>Search</DrawerHeader>
  
-
-  
           <form onSubmit={handleSubmit}>
+            <DrawerBody>
+              <FormControl>
+                <FormLabel>Min</FormLabel>
+                <Input name='min_price' placeholder='min' />
+              </FormControl>
 
-          <DrawerBody>
-            <FormControl>
-              <FormLabel>Min</FormLabel>
-              <Input name='min_price' placeholder='min' />
-            </FormControl>
-            <FormControl >
-              <FormLabel>Max</FormLabel>
-              <Input name='max_price' placeholder='max' />
-            </FormControl>
+              <FormControl >
+                <FormLabel>Max</FormLabel>
+                <Input name='max_price' placeholder='max' />
+              </FormControl>
 
-            <FormControl>
-              <FormLabel>Location</FormLabel>
-              <Input name='location' placeholder='location' />
-            </FormControl>
+              <FormControl>
+                <FormLabel>Location</FormLabel>
+                <Input name='location' placeholder='location' />
+              </FormControl>
 
-            <FormControl>
-              <FormLabel>Specialties</FormLabel>
-              <Input name='specialties' placeholder='specialties' />
-            </FormControl>
+              <FormControl>
+                <FormLabel>Specialties</FormLabel>
+                <Input name='specialties' placeholder='specialties' />
+              </FormControl>
 
             </DrawerBody>
             <DrawerFooter>
 
-            <Button width="full" mt={4} type="submit">
-            Searchies
-            </Button>
+              <Button width="full" mt={4} type="submit">
+              Searchies
+              </Button>
             </DrawerFooter>
 
-
-
           </form>
-
-
-
-        {/* <DrawerFooter>
-          <Button variant='outline' mr={3} onClick={onClose}>
-            Cancel
-          </Button>
-          <Button colorScheme='blue' onClick={() => props.updateTherapists(searchState)}
-          >
-            Save</Button>
-
-        </DrawerFooter> */}
       </DrawerContent>
       </Drawer>
     )

@@ -5,8 +5,6 @@ const bcrypt = require('bcrypt');
 //change to get w query string
 export async function POST(req: Request, res: Response){
     const data = await req.json()
-
-    console.log('GET THERAPIST DATA API',data);
     let searchedTherapists;
     buildSQL(data)
 
@@ -18,7 +16,7 @@ export async function POST(req: Request, res: Response){
         FROM therapists
         WHERE price_min >= ${data.min_price} AND price_max <= ${data.max_price};
         `;
-        console.log('ESXDTFGCHVJBKNLM:<',searchedTherapists.rows)
+
         return NextResponse.json( searchedTherapists.rows, { status: 201 })
         
     } catch (error) {
@@ -31,18 +29,19 @@ export async function POST(req: Request, res: Response){
     
 }
 
+//making sql query that will suit vars given by user search
 const buildSQL = (prompts) => {
     let query = '';
-    switch(prompts) {
-        case prompts.min_price:
-            query += "price_min >= ${data.min_price}";
-        case prompts.max_price:
-            query += "price_max <= ${data.max_price};";
-        case prompts.location:
-            query += "location";
-        default:
-            query = "I have never heard of that one..";
+    let queryMap = {
+        max_price: "price_max <= ${data.max_price}",
+        location:  "location",
+        specialities: "specialities"
     }
+    Object.entries(prompts).map(([key, value]) => (
+        query += value ? queryMap[key] : ' '
+
+
+    ))
     console.log('Q:',query)
 
 }
