@@ -76,7 +76,7 @@ Client order of operations
             - from reg -> redirect to add therapists to build out org.
 
 # Data
-account is expected to be a company, a company may not have multiple therapists under their umbrella. therapists may have individual email and phone number associated than the company, if user does not input email and phone number we should auto pull company info. handled by db or backend?
+account is expected to be a company, a company may/ may not have multiple therapists under their umbrella. therapists may have individual email and phone number associated than the company, if user does not input email and phone number we should auto pull company info. handled by db or backend?
 
 
 - REVISIT - change name to email? and "email" should be client accessible email, which may differ fron sign in. confusing? 
@@ -122,3 +122,5 @@ https://chakra-ui.com/getting-started/nextjs-app-guide
     - start home page which will show therapists? start of searchability
     - make account nav, impliments login cookies
     - handle redirect. upon successful account creation
+    - consider auth token usage for account login
+    - how to set priority for search bar? drag and drop? back end ?
