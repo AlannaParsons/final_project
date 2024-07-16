@@ -13,11 +13,11 @@ export default function Page({ params }: { params: { id: string } }) {
   console.log('on search id page:', params.id)
 
     
-    const getTherapist = async () => {
+    const getTherapist = async (id) => {
         try {
-          const res = await fetch(`/api/search/${params.id}`,{
+          const res = await fetch(`/api/search/${id}`,{
             method: 'POST',
-            body: JSON.stringify(params.id),
+            body: JSON.stringify(id),
             headers: {
               'content-type': 'application/json'
             }
@@ -37,11 +37,12 @@ export default function Page({ params }: { params: { id: string } }) {
 
       const [therapist, setTherapist] = useState(null)
       useEffect(() => {
-        getTherapist()
+
+        getTherapist(params.id)
+        console.log('clicked therapist???',therapist)   
       },[]);
 
-      console.log('no therapist?????!!!', therapist)
-   
+      
 
     
       

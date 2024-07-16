@@ -2,6 +2,7 @@
 //https://v2.chakra-ui.com/docs/components/drawer
 
 import {
+    Box,
     FormControl,
     FormLabel,
     IconButton,
@@ -19,6 +20,7 @@ import {
     DrawerOverlay,
     DrawerContent,
     DrawerCloseButton,
+    
   } from '@chakra-ui/react'
   import { allowedNodeEnvironmentFlags } from 'process'
   import { useState } from 'react';
@@ -43,51 +45,33 @@ import {
     }
   
     return (
-      <Drawer
-      //isOpen={isOpen}
-      isOpen={false}
-      placement='right'
-      onClose={onClose}
-      //finalFocusRef={btnRef}
-    >
-      <DrawerOverlay />
-      <DrawerContent>
-        <DrawerCloseButton />
-        <DrawerHeader>Search</DrawerHeader>
- 
-          <form onSubmit={handleSubmit}>
-            <DrawerBody>
-              <FormControl>
-                <FormLabel>Min</FormLabel>
-                <Input name='min_price' placeholder='min' />
-              </FormControl>
+      <Box>
+        <h1>Search</h1>
+        <form onSubmit={handleSubmit}>
 
-              <FormControl >
-                <FormLabel>Max</FormLabel>
-                <Input name='max_price' placeholder='max' />
-              </FormControl>
+            <FormControl >
+              <FormLabel>Max</FormLabel>
+              <Input name='max_price' placeholder='max' />
+            </FormControl>
 
-              <FormControl>
-                <FormLabel>Location</FormLabel>
-                <Input name='location' placeholder='location' />
-              </FormControl>
+            <FormControl>
+              <FormLabel>Location</FormLabel>
+              <Input name='location' placeholder='location' />
+            </FormControl>
 
-              <FormControl>
-                <FormLabel>Specialties</FormLabel>
-                <Input name='specialties' placeholder='specialties' />
-              </FormControl>
+            <FormControl>
+              <FormLabel>Specialties</FormLabel>
+              <Input name='specialties' placeholder='specialties' />
+            </FormControl>
 
-            </DrawerBody>
-            <DrawerFooter>
+          <footer>
+            <Button width="full" mt={4} type="submit">
+            Searchies
+            </Button>
+          </footer>
 
-              <Button width="full" mt={4} type="submit">
-              Searchies
-              </Button>
-            </DrawerFooter>
-
-          </form>
-      </DrawerContent>
-      </Drawer>
+        </form>
+      </Box>
     )
   }
 

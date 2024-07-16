@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation'
 import {
     Box,
+    Flex, Spacer,
     SimpleGrid,
   } from '@chakra-ui/react';
 
@@ -43,11 +44,11 @@ export default function Page(props) {
 
       
     return (
-        <>
+        <Flex>
 
         <SearchBar updateTherapists={updateTherapists} ></SearchBar>
 
-        <SimpleGrid columns={1} spacingX='40px' spacingY='20px'>
+        <SimpleGrid flex='1' columns={1} spacingX='40px' spacingY='20px'>
 
             {therapists.map((therapist) => (
 
@@ -65,7 +66,7 @@ export default function Page(props) {
 
 
         </SimpleGrid>
-        </>
+        </Flex>
 
 
    

@@ -4,9 +4,9 @@ const { db } = require('@vercel/postgres');
 const bcrypt = require('bcrypt');
 
 export async function POST(req: Request, res: Response){
-    const data = await req.json()
+    const id = await req.json()
     let therapist;
-    console.log('api search id:',data)
+    console.log('api search id:',id)
 
     const client = await db.connect();
     try {
@@ -14,8 +14,9 @@ export async function POST(req: Request, res: Response){
         therapist = await client.sql`
         SELECT *
         FROM therapists
-        WHERE id = ${data};
+        WHERE id = ${id};
         `;
+        console.log('find from api?')
 
         return NextResponse.json( therapist.rows[0], { status: 201 })
         

@@ -124,3 +124,8 @@ https://chakra-ui.com/getting-started/nextjs-app-guide
     - handle redirect. upon successful account creation
     - consider auth token usage for account login
     - how to set priority for search bar? drag and drop? back end ?
+    - pricing stucture not working, may remove min price for user
+    -consider back button from indepth profils back to search results??
+# Bugs
+    - page loading 2-3 times
+    - initial page load not grabbing data
