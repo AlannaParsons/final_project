@@ -27,6 +27,7 @@
 
 .description p {
   position: relative;
+  align-self: center;
   margin: 0;
   padding: 1rem;
   background-color: rgba(var(--callout-rgb), 0.5);

@@ -6,6 +6,7 @@ const bcrypt = require('bcrypt');
 export async function POST(req: Request, res: Response){
     const data = await req.json()
     let searchedTherapists;
+    console.log('api search requesrt:',data)
     buildSQL(data)
 
     const client = await db.connect();

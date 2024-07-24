@@ -3,6 +3,8 @@
 
 import {
     Box,
+    Checkbox,
+    CheckboxGroup,
     FormControl,
     FormLabel,
     IconButton,
@@ -13,19 +15,17 @@ import {
     useDisclosure,
     useMergeRefs,
     Button,
-    Drawer,
-    DrawerBody,
-    DrawerFooter,
-    DrawerHeader,
-    DrawerOverlay,
-    DrawerContent,
-    DrawerCloseButton,
+    HStack,
+    Radio,
+    RadioGroup,
+    Stack,
     
   } from '@chakra-ui/react'
   import { allowedNodeEnvironmentFlags } from 'process'
   import { useState } from 'react';
   import { forwardRef, useRef } from 'react'
   import { HiEye, HiEyeOff } from 'react-icons/hi'
+  import { useCheckbox } from '@chakra-ui/react'
   
   export const SearchBar = (props) => {
     const { isOpen, onOpen, onClose } = useDisclosure()
@@ -37,10 +37,14 @@ import {
       location: null
     })
 
+    const { state, getCheckboxProps, getInputProps, getLabelProps, htmlProps } =
+      useCheckbox(props)
+
     const handleSubmit = async (e: FormEvent) => {
       e.preventDefault()
       const formParse = new FormData(e.target as HTMLFormElement);
       const searchParams = Object.fromEntries(formParse.entries())
+      console.log('searchbar search params from form:', searchParams)
       props.updateTherapists(searchParams)
     }
   
@@ -59,10 +63,18 @@ import {
               <Input name='location' placeholder='location' />
             </FormControl>
 
-            <FormControl>
+            <Box>
               <FormLabel>Specialties</FormLabel>
-              <Input name='specialties' placeholder='specialties' />
-            </FormControl>
+              <CheckboxGroup colorScheme='green' defaultValue={['naruto', 'kakashi']}>
+                <Stack spacing={[1, 5]} direction={['column', 'row']}>
+                  <Checkbox value='ADHD'>ADHD</Checkbox>
+                  <Checkbox value='Autism'>Autism</Checkbox>
+                  <Checkbox value='PTSD'>PTSD</Checkbox>
+                  <Checkbox value='Couples'>Couples</Checkbox>
+                  <Checkbox value='ED'>Eating Disorders</Checkbox>
+                </Stack>
+              </CheckboxGroup>
+            </Box>
 
           <footer>
             <Button width="full" mt={4} type="submit">
