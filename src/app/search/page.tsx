@@ -52,7 +52,7 @@ export default function Page(props) {
 
             {therapists.map((therapist) => (
 
-                <Box key={therapist.id} bg='tomato' height='80px' onClick={() => router.push(`/search/${therapist.id}`)}>
+                <Box key={therapist.id} bg='tomato' height='80px' onClick={() => router.push(`/therapist/${therapist.id}`)}>
                     
                     {therapist.name}
                     {therapist.price_max} 

@@ -1,6 +1,4 @@
-// User/Account sign up page 
-//eventual change to form component?
-//change pricing to slider ui. change therapies to list and "other"
+// User/Account new account page 
 //handle success/failure in front end?
 "use client"
 import {
@@ -21,7 +19,7 @@ export default function Register() {
         const formParse = new FormData(e.target as HTMLFormElement);
         console.log('handler formdata', Object.fromEntries(formParse.entries()))
         try {
-          const res = await fetch('/api/account',{
+          const res = await fetch('/api/account/create',{
             method: 'POST',
             body: JSON.stringify(Object.fromEntries(formParse.entries())),
             headers: {
@@ -43,28 +41,6 @@ export default function Register() {
 
     <form onSubmit={handleSubmit}>
     {/* same line . drop down?*/}
-        <Card>
-            <CardHeader>
-                <Heading size='md'>User</Heading>
-            </CardHeader>
-
-            <HStack spacing='24px'>
-                <FormControl isRequired>
-                    <FormLabel>Designation</FormLabel>
-                    <Input name='des' placeholder='Des' />
-                </FormControl>
-
-                <FormControl isRequired>
-                    <FormLabel>First name</FormLabel>
-                    <Input name='fn' placeholder='First name' />
-                </FormControl>
-
-                <FormControl isRequired>
-                    <FormLabel>Last name</FormLabel>
-                    <Input name='ln' placeholder='Last name' />
-                </FormControl>
-            </HStack>
-        </Card>
 
         <Card>
             <CardHeader>
@@ -111,23 +87,6 @@ export default function Register() {
                 <FormLabel>Address</FormLabel>
                 <Input name='address' placeholder='Add' />
             </FormControl>
-        </Card>
-
-        <Card>
-            <CardHeader>
-                <Heading size='md'>Therapy info</Heading>
-            </CardHeader>
-
-            <FormControl isRequired>
-                <FormLabel>Pricing</FormLabel>
-                <Input name='price' placeholder='$' />
-            </FormControl>
-
-            <FormControl isRequired>
-                <FormLabel>Available Therapies</FormLabel>
-                <Input name='therapies' placeholder='therapies?' />
-            </FormControl>
-
         </Card>
 
         <Button width="full" mt={4} type="submit">

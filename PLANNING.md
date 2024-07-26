@@ -126,6 +126,10 @@ https://chakra-ui.com/getting-started/nextjs-app-guide
     - how to set priority for search bar? drag and drop? back end ?
     - pricing stucture not working, may remove min price for user
     -consider back button from indepth profils back to search results??
+    - rethink db naming. 
+            -account (may hold multiple therapists) (CHANGED FROM USER. CHANGE ALL INSTANCES)
+                -therapist
 # Bugs
     - page loading 2-3 times
     - initial page load not grabbing data
+    - get higher res img for logo

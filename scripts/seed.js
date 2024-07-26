@@ -5,6 +5,7 @@ const {
 } = require('../src/app/lib/placeholder-data.js');
 const bcrypt = require('bcrypt');
 
+//USERS UNUSED.
 async function seedUsers(client) {
   try {
     //await client.sql`DROP TABLE users`
@@ -136,8 +137,8 @@ async function seedTherapists(client) {
     const insertedTherapists = await Promise.all(
       therapists.map(
         (therapist) => client.sql`
-        INSERT INTO therapists (id, name, designation, phone_number, email, website, company_id, accepting_clients, price_min, price_max, therapies)
-        VALUES (${therapist.id}, ${therapist.name}, ${therapist.designation}, 
+        INSERT INTO therapists (id, account_id, name, designation, phone_number, email, website, company_id, accepting_clients, price_min, price_max, therapies)
+        VALUES (${therapist.id}, ${therapist.account_id}, ${therapist.name}, ${therapist.designation}, 
             ${therapist.phone_number}, ${therapist.email}, ${therapist.website},
             ${therapist.company_id}, ${therapist.accepting_clients},
             ${therapist.price_min}, ${therapist.price_max}, ${therapist.therapies})

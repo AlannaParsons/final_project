@@ -10,14 +10,11 @@ import {
 
 
 export default function Page({ params }: { params: { id: string } }) {
-  console.log('on search id page:', params.id)
 
-    
     const getTherapist = async (id) => {
         try {
-          const res = await fetch(`/api/search/${id}`,{
-            method: 'POST',
-            body: JSON.stringify(id),
+          const res = await fetch(`/api/therapist/${id}`,{
+            method: 'GET',
             headers: {
               'content-type': 'application/json'
             }
@@ -39,7 +36,7 @@ export default function Page({ params }: { params: { id: string } }) {
       useEffect(() => {
 
         getTherapist(params.id)
-        console.log('clicked therapist???',therapist)   
+
       },[]);
 
       
